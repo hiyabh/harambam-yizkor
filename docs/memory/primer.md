@@ -1,29 +1,21 @@
 # Session Primer - harambam-yizkor
 
+**Last updated:** 2026-09-19 - v1.2.1 חי ב-GitHub Pages, הקהילה כבר מוסיפה שמות.
+
 ## Design style
 **Apple / Fluid** - נבחר על ידי חייא ב-2026-09-19. נימוק: ממשק שנשלח לכל הקהילה במובייל, צריך להרגיש טבעי ומכובד. סקילים: `apple-design` + `emil-design-eng` נטענו לפני כתיבת ה-UI. פלטה נגזרת מלוגו בית הרמב"ם (כחול `#2f55b5`).
 
-## מצב נוכחי (2026-09-19)
-- אתר GitHub Pages: https://hiyabh.github.io/harambam-yizkor/ (ריפו ציבורי `hiyabh/harambam-yizkor`)
-- הרשימה הבסיסית (תשפ"ו): `data/names.json` - 301 גברים, 205 נשים (30 כפילויות מדויקות אוחדו).
-- הוספות הקהילה: Supabase פרויקט `bina_payment` (`idgwbzckafwblfuaztcb`), טבלה `public.yizkor_names`, RLS: anon select(approved)+insert. פרויקט חינמי נפרד לא נוצר - החשבון במכסת 2 פרויקטים חינמיים.
-- ייצוא: `export.html` - Word (David/RTL/מספרי עמודים, ספריית `docx` מקומית ב-`vendor/`), הדפסה, העתקה, JSON.
+## Current focus
+האתר נמסר ומוכן לשליחה לקהילה לפני ערב כיפור (20.9.2026). אין עבודה פתוחה בקוד.
 
-## מה נעשה בסשן הזה
-- בנייה מאפס: HTML/CSS/JS vanilla, bottom sheet נגרר, זיהוי כפילות חי, OG image, keepalive workflow.
-- אומת ב-Playwright: iPhone/Samsung/דסקטופ, light/dark, חיפוש, הוספה אמיתית, ייצוא DOCX.
-- האתר החי אומת (2026-09-19 22:40): 200, תגי OG עם URL מוחלט, Supabase נטען מ-github.io ללא אזהרה, docx נטען ב-export.
+## מצב
+- אתר: https://hiyabh.github.io/harambam-yizkor/ · ריפו ציבורי `hiyabh/harambam-yizkor` · v1.2.1
+- בסיס תשפ"ו: `data/names.json` (301 גברים, 205 נשים). הוספות: Supabase `bina_payment` (`idgwbzckafwblfuaztcb`) → `public.yizkor_names` (RLS anon select+insert; פרויקט חינמי נפרד לא נוצר - מכסה מלאה). נכון לסגירה: 13 שורות (10 מהרב, 3 מהקהילה).
+- ייצוא: `export.html` → Word (David/RTL/A4/מספרי עמודים, `docx` ב-`vendor/`, אומת ב-PDF), הדפסה, העתקה, JSON.
 
-## עדכון 1.1.0 (2026-09-19, מאוחר)
-- כותרת "רשימת הנפטרים"; תצוגה מקדימה של 12 שמות + "הצג את כל השמות"; 10 שמות מהרב הוכנסו לטבלה (7 נשים, 3 גברים). חי ומאומת.
+## This session (short)
+- נבנה מאפס ונפרס; 3 סבבי תיקונים של חייא: כותרת "הנפטרים", תצוגה מקדימה 12 + "הצג הכל", חיפוש חוצה-מגדר מקובץ, שם קובץ Word בגרשיים.
+- הבא: לשלוח את הקישור; לפני התפילה להוריד Word; אחרי כיפור להכין `names.json` לשנה הבאה (README).
+- חסם: אין admin UI למחיקה - דרך Supabase dashboard או Claude (MCP).
 
-## עדכון 1.2.0 (2026-09-19)
-- חיפוש חוצה-מגדר עם קיבוץ גברים/נשים; לשוניות מוסתרות בזמן חיפוש.
-
-## הבא בתור
-- לשלוח את הקישור לקהילה (ערב כיפור 20.9.2026).
-- לפני התפילה: `export.html` → "הורד קובץ Word".
-- אחרי כיפור: לשקול ניקוי הטבלה והכנת `names.json` לשנה הבאה (הוראות ב-README).
-
-## חסמים / החלטות פתוחות
-- אין admin UI למחיקה; מחיקה דרך Supabase dashboard או דרך Claude (MCP).
+יומן מלא: `~/.claude/skills/session-journal/logs/2026-09-19-harambam-yizkor.md`
