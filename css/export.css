@@ -1,0 +1,48 @@
+/* Export page: on screen a clean two-column list, on paper a compact printout. */
+.hero-compact { padding-block-start: var(--space-5); position: relative; }
+.hero-compact .hero-logo { width: 5.5rem; height: 5.5rem; }
+.back-link {
+  position: absolute;
+  inset-block-start: var(--space-4);
+  inset-inline-start: var(--space-4);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.export-actions { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-block-end: var(--space-4); }
+@media (max-width: 480px) { .export-actions { grid-template-columns: 1fr; } }
+
+.export-section { margin-block-start: var(--space-6); }
+.export-heading {
+  margin: 0 0 var(--space-3);
+  font-size: 1.3rem;
+  padding-block-end: var(--space-2);
+  border-block-end: 2px solid var(--accent);
+}
+.export-count { color: var(--text-muted); font-weight: 500; font-size: 0.95rem; }
+
+.export-list {
+  margin: 0;
+  padding-inline-start: 2rem;
+  columns: 2;
+  column-gap: var(--space-5);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+@media (max-width: 480px) { .export-list { columns: 1; } }
+.export-list li { break-inside: avoid; }
+.export-list .badge-new { margin-inline-start: 0.4rem; vertical-align: middle; }
+
+@media print {
+  @page { size: A4; margin: 2cm; }
+  body { background: white; color: black; font-size: 12pt; }
+  .no-print, .back-link, .hero-logo { display: none !important; }
+  .hero { padding: 0 0 1rem; }
+  .hero-title { font-size: 18pt; }
+  .hero-community, .hero-lead { color: black; }
+  .export-heading { border-color: black; font-size: 16pt; page-break-after: avoid; }
+  .export-list { columns: 3; font-size: 12pt; line-height: 1.45; }
+  .badge-new { display: none; }
+  .export-section { margin-block-start: 1.2rem; }
+}

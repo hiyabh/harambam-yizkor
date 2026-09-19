@@ -1,0 +1,9 @@
+{
+  "name": "harambam-yizkor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "רשימת הנזכרים ליום הכיפורים - בית כנסת בית הרמב\"ם מודיעין (GitHub Pages + Supabase)",
+  "scripts": {
+    "serve": "python -m http.server 8765 --bind 127.0.0.1"
+  }
+}

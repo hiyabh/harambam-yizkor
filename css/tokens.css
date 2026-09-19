@@ -1,0 +1,96 @@
+/* Design tokens - palette derived from the Beit HaRambam logo (deep glassy blue). */
+:root {
+  color-scheme: light dark;
+
+  --accent: #2f55b5;
+  --accent-strong: #1f3f8f;
+  --accent-soft: #e4eaf9;
+  --accent-text: #ffffff;
+
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --surface-2: #eef1f8;
+  --text: #0f172a;
+  --text-muted: #5b6478;
+  --text-faint: #8a93a6;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.16);
+  --scrim: rgba(8, 14, 32, 0.45);
+
+  --success: #1b7f4b;
+  --success-soft: #e3f5ea;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --warning: #8a5a00;
+  --warning-soft: #fff4d6;
+
+  --glass: rgba(244, 246, 251, 0.72);
+  --glass-edge: rgba(255, 255, 255, 0.5);
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 24px 64px rgba(15, 23, 42, 0.22);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  --font: "Heebo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-press: 140ms;
+  --dur-fast: 180ms;
+  --dur-sheet: 380ms;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #6d8fe6;
+    --accent-strong: #8fa9ef;
+    --accent-soft: #1b2745;
+    --accent-text: #0b1220;
+
+    --bg: #0b1220;
+    --surface: #141c2e;
+    --surface-2: #1b2438;
+    --text: #e8ecf5;
+    --text-muted: #a3adc2;
+    --text-faint: #6f7a92;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.18);
+    --scrim: rgba(0, 0, 0, 0.6);
+
+    --success: #5ccf8a;
+    --success-soft: #12331f;
+    --danger: #ff8a80;
+    --danger-soft: #3a1512;
+    --warning: #f4c76a;
+    --warning-soft: #33290f;
+
+    --glass: rgba(11, 18, 32, 0.72);
+    --glass-edge: rgba(255, 255, 255, 0.08);
+
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass: var(--bg);
+  }
+}

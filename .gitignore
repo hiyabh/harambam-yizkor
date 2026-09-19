@@ -1,0 +1,8 @@
+# Local only
+graphify-out/
+.DS_Store
+Thumbs.db
+*.log
+__pycache__/
+.env
+.env.*

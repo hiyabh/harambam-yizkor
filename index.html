@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>רשימת הנזכרים ליום הכיפורים תשפ"ז - בית הרמב"ם מודיעין</title>
+  <meta name="description" content="בדקו אם יקיריכם נמצאים ברשימת האזכרה ליום הכיפורים תשפ&quot;ז של בית כנסת בית הרמב&quot;ם במודיעין, והוסיפו שמות חסרים. פדיון כפרות דרך הרב חייא בן חמו.">
+  <meta name="theme-color" content="#2f55b5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:site_name" content="בית כנסת בית הרמב&quot;ם - מודיעין">
+  <meta property="og:title" content="רשימת הנזכרים ליום הכיפורים תשפ&quot;ז - בית הרמב&quot;ם מודיעין">
+  <meta property="og:description" content="בדקו אם יקיריכם ברשימת האזכרה, והוסיפו שמות חסרים. פדיון כפרות דרך הרב חייא בן חמו.">
+  <meta property="og:url" content="https://hiyabh.github.io/harambam-yizkor/">
+  <meta property="og:image" content="https://hiyabh.github.io/harambam-yizkor/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="לוגו בית הרמב&quot;ם - רשימת הנזכרים ליום הכיפורים תשפ&quot;ז">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="רשימת הנזכרים ליום הכיפורים תשפ&quot;ז - בית הרמב&quot;ם מודיעין">
+  <meta name="twitter:description" content="בדקו אם יקיריכם ברשימת האזכרה, והוסיפו שמות חסרים.">
+  <meta name="twitter:image" content="https://hiyabh.github.io/harambam-yizkor/assets/og-image.png">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/logo-192.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="canonical" href="https://hiyabh.github.io/harambam-yizkor/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="hero">
+    <img class="hero-logo" src="assets/logo-192.png" width="120" height="120" alt="בית כנסת בית הרמב&quot;ם" decoding="async">
+    <p class="eyebrow">לעילוי נשמת יקירינו</p>
+    <h1 class="hero-title">רשימת הנזכרים<br>ליום הכיפורים תשפ"ז</h1>
+    <p class="hero-community">בית כנסת בית הרמב"ם - מודיעין</p>
+    <p class="hero-lead">
+      השמות שברשימה ייאמרו באזכרה ביום הכיפורים. בדוק שיקירך נמצא ברשימה -
+      ואם לא, הוסף אותו כאן ותזכה למצוות.
+    </p>
+  </header>
+
+  <div class="sticky-bar">
+    <div class="container">
+      <label class="search-field">
+        <span class="visually-hidden">חיפוש שם ברשימה</span>
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 0 1 5.9 12.1l4.3 4.3-1.4 1.4-4.3-4.3A7.5 7.5 0 1 1 10.5 3Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z" fill="currentColor"/></svg>
+        <input id="search" type="search" inputmode="search" autocomplete="off" autocapitalize="off" spellcheck="false"
+               placeholder="חפש שם, למשל: אברהם בן שרה" enterkeyhint="search">
+        <button id="search-clear" class="search-clear" type="button" aria-label="נקה חיפוש" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.3 4.9 12 10.6l5.7-5.7 1.4 1.4-5.7 5.7 5.7 5.7-1.4 1.4-5.7-5.7-5.7 5.7-1.4-1.4 5.7-5.7-5.7-5.7z" fill="currentColor"/></svg>
+        </button>
+      </label>
+      <p id="result-count" class="result-count" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <main class="container">
+    <div id="gender-tabs" class="segmented" role="tablist" aria-label="בחירת רשימה">
+      <button class="segment" role="tab" type="button" data-gender="m" aria-selected="true">
+        גברים <span class="tab-count">-</span>
+      </button>
+      <button class="segment" role="tab" type="button" data-gender="f" aria-selected="false">
+        נשים <span class="tab-count">-</span>
+      </button>
+      <span class="segment-indicator" aria-hidden="true"></span>
+    </div>
+
+    <p id="loading-state" class="state-line" hidden>טוען את הרשימה…</p>
+    <p id="load-error" class="state-line is-danger" role="alert" hidden></p>
+    <p id="community-warning" class="state-line is-warning" hidden>
+      השמות שנוספו השנה לא נטענו כרגע. הרשימה של שנה שעברה מוצגת במלואה - ניתן לחפש ולהוסיף כרגיל.
+    </p>
+
+    <ul id="names-list" class="names-list" aria-live="polite"></ul>
+
+    <div id="empty-state" class="empty-state" hidden>
+      <p class="empty-title">לא נמצא "<span id="empty-query"></span>" ברשימה</p>
+      <p class="empty-hint">נסה חיפוש קצר יותר (רק השם הפרטי), או הוסף את השם עכשיו.</p>
+      <button id="empty-add" class="btn btn-primary" type="button">הוסף את השם לרשימה</button>
+    </div>
+
+    <section class="card add-card">
+      <h2 class="card-title">לא מצאת את יקירך?</h2>
+      <p class="card-text">הוסף את שמו לרשימה - הוא יופיע כאן מיד וייאמר באזכרה.</p>
+      <button class="btn btn-primary btn-wide" type="button" data-open-add>הוספת נפטר / נפטרת</button>
+    </section>
+
+    <section class="card kaparot-card" id="kaparot">
+      <h2 class="card-title">פדיון כפרות <span class="emoji" aria-hidden="true">🐔💵📲</span></h2>
+      <ul class="kaparot-list">
+        <li>ניתן לעשות כבר מעכשיו.</li>
+        <li>אפשר לעשות עכשיו העברה כספית, ובערב כיפור לסובב כסף מעל הראש ואחר כך לכוון שזה כנגד מה שכבר נתת.</li>
+        <li>יקח בידו סכום כסף (מינימום 26 ₪ לאדם), יסובב מעל ראשו ויאמר (3 פעמים):</li>
+      </ul>
+      <blockquote class="nusach">
+        זה חליפתי<br>
+        זה תמורתי<br>
+        זה כפרתי<br>
+        זה הכסף ילך לצדקה, ואני אלך לחיים טובים ארוכים ולשלום
+      </blockquote>
+      <p class="card-text">ניתן להעביר דרך הרב חייא בן חמו:</p>
+      <div class="pay-actions">
+        <a class="btn btn-primary" href="https://payboxapp.page.link/ncu2aRodKL8mu6L89" target="_blank" rel="noopener">
+          העברה בפייבוקס
+        </a>
+        <button id="copy-bit" class="btn btn-secondary" type="button">
+          <span class="copy-label">Bit: 050-8858932 <span class="copy-hint">(לחץ להעתקה)</span></span>
+          <span class="copy-done">המספר הועתק ✓</span>
+        </button>
+      </div>
+      <p class="signature">כתיבה וחתימה טובה! <span class="emoji" aria-hidden="true">🖋📜</span></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>הרב חייא בן חמו · בית כנסת בית הרמב"ם - מודיעין</p>
+    <p><a class="quiet-link" href="export.html">ייצוא הרשימה המלאה</a></p>
+  </footer>
+
+  <div id="add-sheet" class="sheet-root" hidden>
+    <div class="sheet-scrim"></div>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="add-title">
+      <div class="sheet-grip"><span class="sheet-handle"></span></div>
+      <button class="sheet-close" type="button" aria-label="סגור" data-close>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.3 4.9 12 10.6l5.7-5.7 1.4 1.4-5.7 5.7 5.7 5.7-1.4 1.4-5.7-5.7-5.7 5.7-1.4-1.4 5.7-5.7-5.7-5.7z" fill="currentColor"/></svg>
+      </button>
+
+      <form id="add-form" class="add-form" novalidate>
+        <h2 id="add-title" class="sheet-title">הוספת שם לרשימה</h2>
+        <p class="sheet-sub">השם יופיע ברשימה מיד וייאמר באזכרה ביום הכיפורים.</p>
+
+        <fieldset class="segmented segmented-form">
+          <legend class="visually-hidden">נפטר או נפטרת</legend>
+          <label class="segment"><input type="radio" name="gender" value="m" checked><span>נפטר</span></label>
+          <label class="segment"><input type="radio" name="gender" value="f"><span>נפטרת</span></label>
+        </fieldset>
+
+        <div class="field">
+          <label class="field-label" id="add-name-label" for="add-name">שם הנפטר</label>
+          <input id="add-name" class="input" type="text" maxlength="80" autocomplete="off" autocapitalize="off"
+                 spellcheck="false" enterkeyhint="done" data-autofocus>
+          <span class="field-hint" id="name-hint"></span>
+          <p class="field-status" id="name-status" aria-live="polite" hidden></p>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="add-by">שמך (לא חובה)</label>
+          <input id="add-by" class="input" type="text" maxlength="60" autocomplete="name">
+          <span class="field-hint">כדי שהרב יוכל לפנות אליך אם תהיה שאלה על השם.</span>
+        </div>
+
+        <div class="hp" aria-hidden="true">
+          <label for="add-website">אתר</label>
+          <input id="add-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p id="add-error" class="form-error" role="alert" hidden></p>
+        <button id="add-submit" class="btn btn-primary btn-wide" type="submit">
+          <span class="btn-label">הוסף לרשימה</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+
+      <div id="add-success" class="add-success" hidden>
+        <div class="success-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.8 12.2l1.4-1.4 3 3 8.6-8.6 1.4 1.4z" fill="currentColor"/></svg>
+        </div>
+        <h2 class="sheet-title">השם נוסף לרשימה</h2>
+        <p class="success-name" id="success-name"></p>
+        <p class="sheet-sub">תזכה למצוות. השם ייאמר באזכרה ביום הכיפורים.</p>
+        <div class="success-actions">
+          <button class="btn btn-primary btn-wide" type="button" data-close data-autofocus>סיימתי</button>
+          <button id="success-another" class="btn btn-secondary btn-wide" type="button">הוסף שם נוסף</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

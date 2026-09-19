@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ייצוא רשימת הנזכרים תשפ"ז - בית הרמב"ם מודיעין</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#2f55b5">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/export.css">
+</head>
+<body class="export-page">
+  <header class="hero hero-compact">
+    <a class="back-link" href="./">← חזרה לאתר</a>
+    <img class="hero-logo" src="assets/logo-192.png" width="88" height="88" alt="בית כנסת בית הרמב&quot;ם" decoding="async">
+    <h1 class="hero-title">רשימת הנזכרים ליום הכיפורים תשפ"ז</h1>
+    <p class="hero-community">בית כנסת בית הרמב"ם - מודיעין</p>
+    <p id="export-summary" class="hero-lead" aria-live="polite">טוען את הרשימה…</p>
+  </header>
+
+  <main class="container">
+    <div class="export-actions no-print">
+      <button id="btn-docx" class="btn btn-primary" type="button" disabled>הורד קובץ Word</button>
+      <button id="btn-print" class="btn btn-secondary" type="button" disabled>הדפס</button>
+      <button id="btn-copy" class="btn btn-secondary" type="button" disabled>
+        <span class="copy-label">העתק את כל השמות</span><span class="copy-done">הועתק ✓</span>
+      </button>
+      <button id="btn-json" class="btn btn-secondary" type="button" disabled>הורד JSON (לשנה הבאה)</button>
+    </div>
+    <p id="export-error" class="state-line is-danger no-print" role="alert" hidden></p>
+    <p class="state-line no-print">
+      שמות שנוספו השנה על ידי הקהילה מסומנים בתג. הרשימה ממוינת לפי סדר הא"ב.
+    </p>
+
+    <section class="export-section">
+      <h2 class="export-heading">לע"נ - גברים <span id="count-men" class="export-count"></span></h2>
+      <ol id="list-men" class="export-list"></ol>
+    </section>
+
+    <section class="export-section">
+      <h2 class="export-heading">לע"נ - נשים <span id="count-women" class="export-count"></span></h2>
+      <ol id="list-women" class="export-list"></ol>
+    </section>
+  </main>
+
+  <footer class="site-footer no-print">
+    <p>הרב חייא בן חמו · בית כנסת בית הרמב"ם - מודיעין</p>
+  </footer>
+
+  <script src="vendor/docx-9.5.1.umd.js" defer></script>
+  <script type="module" src="js/export.js"></script>
+</body>
+</html>
