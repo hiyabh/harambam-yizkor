@@ -1,6 +1,6 @@
 // Wires data loading, search, the segmented control and the add sheet together.
 import { loadBaseList, loadCommunityList, mergeLists } from "./data.js";
-import { filterEntries, countByGender, renderList } from "./search.js";
+import { filterEntries, countByGender, renderList, renderGroups } from "./search.js";
 import { createSheet } from "./sheet.js";
 import { createAddForm } from "./add-form.js";
 import { CONFIG } from "./config.js";
@@ -51,22 +51,47 @@ function updateTabs() {
   els.segmented.style.setProperty("--active-index", state.gender === "m" ? 0 : 1);
 }
 
-function describeCount(shown) {
-  const label = GENDER_LABELS[state.gender];
-  if (!state.query) return `${shown} ${label} ברשימה`;
-  return shown === 0 ? "לא נמצאו שמות" : `נמצאו ${shown} מתוך ${label}`;
+function describeSearch(men, women) {
+  const total = men + women;
+  if (total === 0) return "לא נמצאו שמות";
+  return `נמצאו ${total} שמות (${men} גברים, ${women} נשים)`;
+}
+
+// A search covers the whole list, men and women alike, grouped under headings.
+function renderSearch(query) {
+  const men = filterEntries(state.entries, "m", query);
+  const women = filterEntries(state.entries, "f", query);
+  renderGroups(els.list, [
+    { label: GENDER_LABELS.m, entries: men },
+    { label: GENDER_LABELS.f, entries: women },
+  ]);
+  els.count.textContent = describeSearch(men.length, women.length);
+  els.empty.hidden = men.length + women.length > 0;
+  els.emptyQuery.textContent = query;
+  els.showMore.hidden = true;
+}
+
+function renderBrowse() {
+  const shown = filterEntries(state.entries, state.gender, "");
+  renderList(els.list, visibleSlice(shown), state.highlightKey);
+  state.highlightKey = null;
+  els.count.textContent = `${shown.length} ${GENDER_LABELS[state.gender]} ברשימה`;
+  els.empty.hidden = true;
 }
 
 function render() {
-  const shown = filterEntries(state.entries, state.gender, state.query);
-  renderList(els.list, visibleSlice(shown), state.highlightKey);
-  state.highlightKey = null;
-  els.count.textContent = describeCount(shown.length);
-  const isEmpty = shown.length === 0 && state.query.trim().length > 0;
-  els.empty.hidden = !isEmpty;
-  els.emptyQuery.textContent = state.query.trim();
+  const query = state.query.trim();
+  if (query) renderSearch(query);
+  else renderBrowse();
+  els.segmented.hidden = Boolean(query);
   els.clear.hidden = state.query.length === 0;
   updateTabs();
+}
+
+const FEMININE_QUERY = /(^|\s)בת(\s|$)/;
+
+function genderForQuery(query) {
+  return FEMININE_QUERY.test(query) ? "f" : state.gender;
 }
 
 function setGender(gender) {
@@ -126,7 +151,10 @@ function bindEvents(addForm) {
     if (tab) setGender(tab.dataset.gender);
   });
   els.addButtons.forEach((btn) => btn.addEventListener("click", () => addForm.openWith("", state.gender)));
-  els.emptyAdd.addEventListener("click", () => addForm.openWith(state.query.trim(), state.gender));
+  els.emptyAdd.addEventListener("click", () => {
+    const query = state.query.trim();
+    addForm.openWith(query, genderForQuery(query));
+  });
   els.showMoreBtn.addEventListener("click", () => { state.expanded = true; render(); });
   els.copyBit?.addEventListener("click", copyBitNumber);
 }

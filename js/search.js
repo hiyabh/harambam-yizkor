@@ -37,10 +37,30 @@ function renderItem(entry, highlightKey) {
   return li;
 }
 
-export function renderList(listEl, entries, highlightKey = null) {
+function renderHeading(label, count) {
+  const li = document.createElement("li");
+  li.className = "names-group-heading";
+  li.textContent = `${label} (${count})`;
+  return li;
+}
+
+// groups: [{ label, entries }] - a heading is shown only for non-empty groups.
+export function renderGroups(listEl, groups, highlightKey = null) {
   const fragment = document.createDocumentFragment();
-  entries.forEach((entry) => fragment.append(renderItem(entry, highlightKey)));
+  for (const group of groups) {
+    if (group.entries.length === 0) continue;
+    if (group.label) fragment.append(renderHeading(group.label, group.entries.length));
+    group.entries.forEach((entry) => fragment.append(renderItem(entry, highlightKey)));
+  }
   listEl.replaceChildren(fragment);
+  scrollToHighlight(listEl, highlightKey);
+}
+
+export function renderList(listEl, entries, highlightKey = null) {
+  renderGroups(listEl, [{ label: null, entries }], highlightKey);
+}
+
+function scrollToHighlight(listEl, highlightKey) {
   if (!highlightKey) return;
   const target = listEl.querySelector(".is-highlighted");
   if (!target) return;
