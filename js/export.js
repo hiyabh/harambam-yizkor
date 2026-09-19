@@ -5,7 +5,8 @@ import { hebrewCompare } from "./normalize.js";
 import { buildDocx } from "./docx-builder.js";
 
 const COPY_FEEDBACK_MS = 1600;
-const DOCX_FILE_NAME = `שמות לאזכרה לנפטרים ליום כיפור ${CONFIG.yearLabel}.docx`;
+// Browsers replace a straight quote in a download name with "_", so the year uses Hebrew gershayim.
+const DOCX_FILE_NAME = `שמות לאזכרה לנפטרים ליום כיפור ${CONFIG.yearLabel.replace('"', "״")}.docx`;
 const JSON_FILE_NAME = "names.json";
 const NEW_BADGE_TEXT = "נוסף השנה";
 

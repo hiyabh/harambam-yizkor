@@ -1,6 +1,6 @@
 {
   "name": "harambam-yizkor",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "description": "רשימת הנפטרים ליום הכיפורים - בית כנסת בית הרמב\"ם מודיעין (GitHub Pages + Supabase)",
   "scripts": {
