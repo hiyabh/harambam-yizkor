@@ -12,6 +12,7 @@
 ## מה נעשה בסשן הזה
 - בנייה מאפס: HTML/CSS/JS vanilla, bottom sheet נגרר, זיהוי כפילות חי, OG image, keepalive workflow.
 - אומת ב-Playwright: iPhone/Samsung/דסקטופ, light/dark, חיפוש, הוספה אמיתית, ייצוא DOCX.
+- האתר החי אומת (2026-09-19 22:40): 200, תגי OG עם URL מוחלט, Supabase נטען מ-github.io ללא אזהרה, docx נטען ב-export.
 
 ## הבא בתור
 - לשלוח את הקישור לקהילה (ערב כיפור 20.9.2026).
