@@ -7,6 +7,8 @@ import { CONFIG } from "./config.js";
 
 const GENDER_LABELS = { m: "גברים", f: "נשים" };
 const COPY_FEEDBACK_MS = 1600;
+// Without a search, only a preview is shown so the add form and kaparot card stay within reach.
+const PREVIEW_COUNT = 12;
 
 const els = {
   search: document.querySelector("#search"),
@@ -17,6 +19,10 @@ const els = {
   empty: document.querySelector("#empty-state"),
   emptyQuery: document.querySelector("#empty-query"),
   emptyAdd: document.querySelector("#empty-add"),
+  showMore: document.querySelector("#show-more"),
+  showMoreBtn: document.querySelector("#show-more-btn"),
+  shownCount: document.querySelector("#shown-count"),
+  totalCount: document.querySelector("#total-count"),
   loading: document.querySelector("#loading-state"),
   loadError: document.querySelector("#load-error"),
   communityWarning: document.querySelector("#community-warning"),
@@ -24,7 +30,16 @@ const els = {
   copyBit: document.querySelector("#copy-bit"),
 };
 
-const state = { entries: [], gender: "m", query: "", highlightKey: null };
+const state = { entries: [], gender: "m", query: "", highlightKey: null, expanded: false };
+
+function visibleSlice(shown) {
+  const preview = !state.query.trim() && !state.expanded && shown.length > PREVIEW_COUNT;
+  els.showMore.hidden = !preview;
+  if (!preview) return shown;
+  els.shownCount.textContent = PREVIEW_COUNT;
+  els.totalCount.textContent = shown.length;
+  return shown.slice(0, PREVIEW_COUNT);
+}
 
 function updateTabs() {
   const counts = countByGender(state.entries);
@@ -44,7 +59,7 @@ function describeCount(shown) {
 
 function render() {
   const shown = filterEntries(state.entries, state.gender, state.query);
-  renderList(els.list, shown, state.highlightKey);
+  renderList(els.list, visibleSlice(shown), state.highlightKey);
   state.highlightKey = null;
   els.count.textContent = describeCount(shown.length);
   const isEmpty = shown.length === 0 && state.query.trim().length > 0;
@@ -57,6 +72,7 @@ function render() {
 function setGender(gender) {
   if (state.gender === gender) return;
   state.gender = gender;
+  state.expanded = false;
   render();
 }
 
@@ -65,6 +81,7 @@ function onAdded(entry) {
   state.gender = entry.gender;
   state.query = "";
   els.search.value = "";
+  state.expanded = true;
   state.highlightKey = `${entry.gender}|${entry.key}`;
   render();
 }
@@ -110,6 +127,7 @@ function bindEvents(addForm) {
   });
   els.addButtons.forEach((btn) => btn.addEventListener("click", () => addForm.openWith("", state.gender)));
   els.emptyAdd.addEventListener("click", () => addForm.openWith(state.query.trim(), state.gender));
+  els.showMoreBtn.addEventListener("click", () => { state.expanded = true; render(); });
   els.copyBit?.addEventListener("click", copyBitNumber);
 }
 

@@ -20,7 +20,7 @@ const MESSAGES = {
 
 function whatsappLink(name, gender) {
   const noun = gender === "f" ? "הנפטרת" : "הנפטר";
-  const text = `שלום הרב, בבקשה להוסיף לרשימת הנזכרים את ${noun}: ${name}`;
+  const text = `שלום הרב, בבקשה להוסיף לרשימת הנפטרים את ${noun}: ${name}`;
   return `https://wa.me/${CONFIG.whatsappPhone}?text=${encodeURIComponent(text)}`;
 }
 

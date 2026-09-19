@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>רשימת הנזכרים ליום הכיפורים תשפ"ז - בית הרמב"ם מודיעין</title>
+  <title>רשימת הנפטרים ליום הכיפורים תשפ"ז - בית הרמב"ם מודיעין</title>
   <meta name="description" content="בדקו אם יקיריכם נמצאים ברשימת האזכרה ליום הכיפורים תשפ&quot;ז של בית כנסת בית הרמב&quot;ם במודיעין, והוסיפו שמות חסרים. פדיון כפרות דרך הרב חייא בן חמו.">
   <meta name="theme-color" content="#2f55b5" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
@@ -11,15 +11,15 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="he_IL">
   <meta property="og:site_name" content="בית כנסת בית הרמב&quot;ם - מודיעין">
-  <meta property="og:title" content="רשימת הנזכרים ליום הכיפורים תשפ&quot;ז - בית הרמב&quot;ם מודיעין">
+  <meta property="og:title" content="רשימת הנפטרים ליום הכיפורים תשפ&quot;ז - בית הרמב&quot;ם מודיעין">
   <meta property="og:description" content="בדקו אם יקיריכם ברשימת האזכרה, והוסיפו שמות חסרים. פדיון כפרות דרך הרב חייא בן חמו.">
   <meta property="og:url" content="https://hiyabh.github.io/harambam-yizkor/">
   <meta property="og:image" content="https://hiyabh.github.io/harambam-yizkor/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="לוגו בית הרמב&quot;ם - רשימת הנזכרים ליום הכיפורים תשפ&quot;ז">
+  <meta property="og:image:alt" content="לוגו בית הרמב&quot;ם - רשימת הנפטרים ליום הכיפורים תשפ&quot;ז">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="רשימת הנזכרים ליום הכיפורים תשפ&quot;ז - בית הרמב&quot;ם מודיעין">
+  <meta name="twitter:title" content="רשימת הנפטרים ליום הכיפורים תשפ&quot;ז - בית הרמב&quot;ם מודיעין">
   <meta name="twitter:description" content="בדקו אם יקיריכם ברשימת האזכרה, והוסיפו שמות חסרים.">
   <meta name="twitter:image" content="https://hiyabh.github.io/harambam-yizkor/assets/og-image.png">
 
@@ -38,7 +38,7 @@
   <header class="hero">
     <img class="hero-logo" src="assets/logo-192.png" width="120" height="120" alt="בית כנסת בית הרמב&quot;ם" decoding="async">
     <p class="eyebrow">לעילוי נשמת יקירינו</p>
-    <h1 class="hero-title">רשימת הנזכרים<br>ליום הכיפורים תשפ"ז</h1>
+    <h1 class="hero-title">רשימת הנפטרים<br>ליום הכיפורים תשפ"ז</h1>
     <p class="hero-community">בית כנסת בית הרמב"ם - מודיעין</p>
     <p class="hero-lead">
       השמות שברשימה ייאמרו באזכרה ביום הכיפורים. בדוק שיקירך נמצא ברשימה -
@@ -79,6 +79,11 @@
     </p>
 
     <ul id="names-list" class="names-list" aria-live="polite"></ul>
+
+    <div id="show-more" class="show-more" hidden>
+      <p class="show-more-text">מוצגים <span id="shown-count"></span> מתוך <span id="total-count"></span> שמות</p>
+      <button id="show-more-btn" class="btn btn-secondary" type="button">הצג את כל השמות</button>
+    </div>
 
     <div id="empty-state" class="empty-state" hidden>
       <p class="empty-title">לא נמצא "<span id="empty-query"></span>" ברשימה</p>

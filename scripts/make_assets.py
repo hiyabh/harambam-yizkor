@@ -15,7 +15,7 @@ OG_TOP = (30, 58, 138)
 OG_BOTTOM = (59, 95, 196)
 LOGO_SIZES = {"logo-512.png": 512, "logo-192.png": 192, "apple-touch-icon.png": 180, "favicon-32.png": 32}
 FONT_CANDIDATES = ["C:/Windows/Fonts/segoeuib.ttf", "C:/Windows/Fonts/arialbd.ttf"]
-TITLE_LINE_1 = "רשימת הנזכרים"
+TITLE_LINE_1 = "רשימת הנפטרים"
 TITLE_LINE_2 = "ליום הכיפורים תשפ\"ז"
 SUBTITLE = "בית כנסת בית הרמב\"ם - מודיעין"
 
