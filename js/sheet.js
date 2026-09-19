@@ -44,28 +44,32 @@ export function createSheet(root, { onClose } = {}) {
     scrim.getAnimations().forEach((a) => a.cancel());
   }
 
-  function enterKeyframes() {
+  // Keyframes always start from the live on-screen value so an interrupted
+  // open/close continues from where it is instead of jumping.
+  function enterKeyframes(fromY) {
     if (reducedMotion()) return [{ opacity: 0 }, { opacity: 1 }];
     if (isDesktop()) return [{ opacity: 0, transform: "scale(0.96)" }, { opacity: 1, transform: "scale(1)" }];
-    return [{ transform: "translateY(100%)" }, { transform: "translateY(0)" }];
+    const start = fromY === null ? "100%" : `${fromY}px`;
+    return [{ transform: `translateY(${start})` }, { transform: "translateY(0)" }];
   }
 
-  function exitKeyframes() {
+  function exitKeyframes(fromY) {
     if (reducedMotion()) return [{ opacity: 1 }, { opacity: 0 }];
     if (isDesktop()) return [{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(0.98)" }];
-    return [{ transform: `translateY(${currentTranslateY(panel)}px)` }, { transform: "translateY(100%)" }];
+    return [{ transform: `translateY(${fromY}px)` }, { transform: "translateY(100%)" }];
   }
 
   function show() {
     if (open) return;
     open = true;
     returnFocusTo = document.activeElement;
+    const fromY = root.hidden ? null : currentTranslateY(panel);
     root.hidden = false;
     document.documentElement.classList.add("sheet-open");
     cancelAnimations();
     const duration = reducedMotion() ? FADE_MS : OPEN_MS;
     scrim.animate([{ opacity: 0 }, { opacity: 1 }], { duration: FADE_MS, easing: EASE_OUT, fill: "both" });
-    panel.animate(enterKeyframes(), { duration, easing: EASE_DRAWER, fill: "both" });
+    panel.animate(enterKeyframes(fromY), { duration, easing: EASE_DRAWER, fill: "both" });
     panel.style.transform = "";
     panel.querySelector("[data-autofocus]")?.focus({ preventScroll: true });
   }
@@ -81,10 +85,11 @@ export function createSheet(root, { onClose } = {}) {
   function hide() {
     if (!open) return;
     open = false;
+    const fromY = currentTranslateY(panel);
     cancelAnimations();
     const duration = reducedMotion() ? FADE_MS : CLOSE_MS;
     scrim.animate([{ opacity: 1 }, { opacity: 0 }], { duration: FADE_MS, easing: EASE_OUT, fill: "both" });
-    const anim = panel.animate(exitKeyframes(), { duration, easing: EASE_OUT, fill: "both" });
+    const anim = panel.animate(exitKeyframes(fromY), { duration, easing: EASE_OUT, fill: "both" });
     anim.onfinish = finishHide;
     anim.oncancel = () => { if (!open) finishHide(); };
   }
